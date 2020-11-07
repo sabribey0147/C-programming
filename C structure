@@ -1,0 +1,54 @@
+#include <stdio.h>
+#include <stdlib.h>
+struct tree{
+int data;
+struct tree *sonraki;
+};
+struct tree *first;
+
+void add_for_tree(int addition)
+{
+   struct tree *stroll=first;
+   struct tree *temp;
+   temp=(struct tree *)malloc(sizeof(temp));
+   temp->data=addition;
+   temp->sonraki=NULL;
+   printf("\ntemp adres->%d",temp);
+    if(first==NULL)
+    {
+       // first=(struct tree *)malloc(sizeof(tree));
+        first=temp;
+    }
+    else
+    {
+        while(stroll->sonraki!=NULL)
+        {
+            stroll=stroll->sonraki;
+        }
+        stroll->sonraki=temp;
+    }
+}
+
+
+void list_tree()
+{
+struct tree *stroll=first;
+
+while(stroll!=NULL)
+    {
+    printf("\n%d",stroll->data);
+    stroll=stroll->sonraki;
+    }
+
+}
+
+int main()
+{
+
+    add_for_tree(10);
+    add_for_tree(20);
+    add_for_tree(30);
+    add_for_tree(40);
+    list_tree();
+    return 0;
+}
